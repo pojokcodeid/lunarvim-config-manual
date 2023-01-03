@@ -316,6 +316,12 @@ lvim.plugins = {
       require "user.lua.config.smartsplit"
     end,
   },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require "user.lua.config.autotag"
+    end,
+  },
 }
 
 lvim.builtin.which_key.mappings["r"] = {
