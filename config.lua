@@ -297,6 +297,25 @@ lvim.plugins = {
     end,
   },
   { "mfussenegger/nvim-jdtls" },
+  {
+    "stevearc/dressing.nvim",
+    config = function()
+      require "user.lua.config.dressing"
+    end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    event = "BufRead",
+    config = function()
+      require("todo-comments").setup()
+    end,
+  },
+  {
+    "mrjones2014/smart-splits.nvim",
+    config = function()
+      require "user.lua.config.smartsplit"
+    end,
+  },
 }
 
 lvim.builtin.which_key.mappings["r"] = {
