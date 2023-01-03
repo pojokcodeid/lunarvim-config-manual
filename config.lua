@@ -52,10 +52,10 @@ local options = {
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
-vim.opt.shortmess:append("c") -- don't give |ins-completion-menu| messages
-vim.opt.iskeyword:append("-") -- hyphenated words recognized by searches
-vim.opt.formatoptions:remove({ "c", "r", "o" }) -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
-vim.opt.runtimepath:remove("/usr/share/vim/vimfiles") -- separate vim plugins from neovim in case vim still in use
+vim.opt.shortmess:append "c" -- don't give |ins-completion-menu| messages
+vim.opt.iskeyword:append "-" -- hyphenated words recognized by searches
+vim.opt.formatoptions:remove { "c", "r", "o" } -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
+vim.opt.runtimepath:remove "/usr/share/vim/vimfiles" -- separate vim plugins from neovim in case vim still in use
 vim.opt.title = true
 vim.opt.titlestring = "%<%F%=%l/%L - Pojok Code"
 -- end general pojok code
@@ -287,15 +287,16 @@ lvim.plugins = {
     "CRAG666/code_runner.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = function()
-      require("user.lua.config.coderunner")
+      require "user.lua.config.coderunner"
     end,
   },
   {
     "NvChad/nvim-colorizer.lua",
     config = function()
-      require("user.lua.config.colorizer")
+      require "user.lua.config.colorizer"
     end,
   },
+  { "mfussenegger/nvim-jdtls" },
 }
 
 lvim.builtin.which_key.mappings["r"] = {
@@ -315,28 +316,28 @@ lvim.builtin.which_key.mappings["r"] = {
 }
 
 local check_backspace = function()
-  local col = vim.fn.col(".") - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+  local col = vim.fn.col "." - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
-local luasnip = require("luasnip")
-local cmp = require("cmp")
+local luasnip = require "luasnip"
+local cmp = require "cmp"
 lvim.builtin.cmp.mapping = {
-  ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-  ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-  ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-  ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-  ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-  ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+  ["<Up>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+  ["<Down>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
+  ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+  ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+  ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+  ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
   ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
   ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
   ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
   ["<C-y>"] = cmp.config.disable,
-  ["<C-e>"] = cmp.mapping({
+  ["<C-e>"] = cmp.mapping {
     i = cmp.mapping.abort(),
     c = cmp.mapping.close(),
-  }),
-  ["<CR>"] = cmp.mapping.confirm({ select = true }),
+  },
+  ["<CR>"] = cmp.mapping.confirm { select = true },
   ["<Tab>"] = cmp.mapping(function(fallback)
     if cmp.visible() then
       cmp.select_next_item()
@@ -377,17 +378,22 @@ lvim.lsp.installer.setup.ensure_installed = {
   "tsserver",
   "intelephense",
   "tailwindcss",
+  "jdtls",
 }
 
-require("lvim.lsp.manager").setup("emmet_ls")
-require("lvim.lsp.manager").setup("tailwindcss")
-require("lvim.lsp.manager").setup("intelephense")
+require("lvim.lsp.manager").setup "emmet_ls"
+require("lvim.lsp.manager").setup "tailwindcss"
+require("lvim.lsp.manager").setup "intelephense"
+require("lvim.lsp.manager").setup "jdtls"
 
-local formatters = require("lvim.lsp.null-ls.formatters")
-formatters.setup({
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
   { command = "stylua", filetype = { "lua" } },
   { command = "prettier" },
   { command = "blade_formatter", filetype = { "php", "blade", "blade.php" } },
-})
+  { command = "google_java_format", filetypes = { "java" } },
+}
 -- overide webdev icon
-require("user.lua.config.webdevicons")
+require "user.lua.config.webdevicons"
+
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })

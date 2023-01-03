@@ -14,3 +14,8 @@ require("user.config")
 ```
  Copy-Item -Path "$env:LOCALAPPDATA\nvim\lua\user\snippets" -Destination "$env:LOCALAPPDATA\nvim\snippets" -Recurse
 ```
+## Copy untuk java di windows 
+```
+Copy-Item -Path "$env:LOCALAPPDATA\nvim\lua\user\ftplugin" -Destination "$env:LOCALAPPDATA\nvim\ftplugin" -Recurse
+```
+
