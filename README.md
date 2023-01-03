@@ -1,4 +1,6 @@
 # lunarvim-config-manual (Windows)
+## HOME
+![home!](img/dashboard.png)
 ## Lakukan clone dari lunarvim 
 ```
 git clone https://github.com/LunarVim/LunarVim.git "$env:LOCALAPPDATA\nvim"
