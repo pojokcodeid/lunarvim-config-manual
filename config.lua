@@ -389,3 +389,5 @@ formatters.setup({
   { command = "prettier" },
   { command = "blade_formatter", filetype = { "php", "blade", "blade.php" } },
 })
+-- overide webdev icon
+require("user.lua.config.webdevicons")
