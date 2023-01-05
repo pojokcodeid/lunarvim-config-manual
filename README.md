@@ -29,3 +29,13 @@ require("user.config")
 Copy-Item -Path "$env:LOCALAPPDATA\nvim\lua\user\ftplugin" -Destination "$env:LOCALAPPDATA\nvim\ftplugin" -Recurse
 ```
 
+# Linux Config 
+```
+git clone https://github.com/LunarVim/LunarVim.git ~/.config/nvim
+git clone https://github.com/pojokcodeid/lunarvim-config-manual.git ~/.config/nvim/lua/user
+```
+### Copy Snippets
+```
+ cp -r ~/.config/nvim/lua/user/snippets ~/.config/nvim/snippets
+```
+
