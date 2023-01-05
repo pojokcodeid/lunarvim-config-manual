@@ -30,6 +30,10 @@ Copy-Item -Path "$env:LOCALAPPDATA\nvim\lua\user\ftplugin" -Destination "$env:LO
 ```
 
 # Linux Config 
+```
+visudo
+user ALL=(ALL) ALL
+```
 ## Persiapan
 ```
 sudo apt install build-essential libssl-dev
