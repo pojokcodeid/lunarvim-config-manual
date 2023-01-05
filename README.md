@@ -33,6 +33,7 @@ Copy-Item -Path "$env:LOCALAPPDATA\nvim\lua\user\ftplugin" -Destination "$env:LO
 ```
 visudo
 user ALL=(ALL) ALL
+username ALL=(ALL) NOPASSWD:ALL 
 ```
 ## Persiapan
 ```
