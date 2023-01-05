@@ -47,6 +47,10 @@ https://github.com/jesseduffield/lazygit#ubuntu
 git clone https://github.com/LunarVim/LunarVim.git ~/.config/nvim
 git clone https://github.com/pojokcodeid/lunarvim-config-manual.git ~/.config/nvim/lua/user
 ```
+## Lakukan Call Function pada file nvim/config.lua  paling bawah 
+```
+require("user.config")
+```
 ### Copy Snippets
 ```
  cp -r ~/.config/nvim/lua/user/snippets ~/.config/nvim/snippets
