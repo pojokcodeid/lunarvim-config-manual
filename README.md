@@ -30,6 +30,19 @@ Copy-Item -Path "$env:LOCALAPPDATA\nvim\lua\user\ftplugin" -Destination "$env:LO
 ```
 
 # Linux Config 
+## Persiapan
+```
+sudo apt install build-essential libssl-dev
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+source ~/.bashrc
+nvm install 18.12.0
+
+sudo apt-get install unzip
+sudo apt-get install ripgrep
+
+https://github.com/jesseduffield/lazygit#ubuntu
+```
+## Config
 ```
 git clone https://github.com/LunarVim/LunarVim.git ~/.config/nvim
 git clone https://github.com/pojokcodeid/lunarvim-config-manual.git ~/.config/nvim/lua/user
