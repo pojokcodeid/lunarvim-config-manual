@@ -416,6 +416,7 @@ local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { command = "stylua", filetype = { "lua" } },
   { command = "prettier" },
+  { command = "black" },
   { command = "blade_formatter", filetype = { "php", "blade", "blade.php" } },
   { command = "google_java_format", filetypes = { "java" } },
 }
@@ -425,5 +426,5 @@ require "user.lua.config.webdevicons"
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
 
 if on_save then
-  require("user.lua.config.auto_cmd")
+  require "user.lua.config.auto_cmd"
 end
