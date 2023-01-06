@@ -8,6 +8,7 @@ an executable
 ]]
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 -- start general pojok code
+local on_save = true
 local options = {
   backspace = vim.opt.backspace + { "nostop" }, -- Don't stop backspace at insert
   clipboard = "unnamedplus", -- Connection to the system clipboard
@@ -422,3 +423,7 @@ formatters.setup {
 require "user.lua.config.webdevicons"
 
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
+
+if on_save then
+  require("user.lua.config.auto_cmd")
+end
