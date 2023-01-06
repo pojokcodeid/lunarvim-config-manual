@@ -2,7 +2,7 @@
 ## HOME
 ![home!](img/dashboard.png)
 ## Kebutuhan dasar 
-1. Install Neovim 8.0+ https://github.com/neovim/neovim/releases/tag/stable 
+1. Install Neovim 8.0+ https://github.com/neovim/neovim/releases/tag/v0.8.1 
 2. C++ Compiler https://www.msys2.org/ 
 3. GIT https://git-scm.com/download/win 
 4. NodeJs https://nodejs.org/en/
