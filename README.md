@@ -18,9 +18,9 @@
 
 # Config Windows
 
-## Pastikan Sudah Install Kebutuhan dasar diatas
+## Pastikan sudah menginstall kebutuhan dasar diatas
 
-## Lakukan clone dari lunarvim
+## clone config
 
 ```
 git clone https://github.com/LunarVim/LunarVim.git "$env:LOCALAPPDATA\nvim"
@@ -91,7 +91,7 @@ node --version
 npm --version
 ```
 
-## Install unzip, repgrip dan Lazygit
+## Install unzip, ripgrep dan lazygit
 
 ```
 sudo apt-get install unzip
@@ -103,7 +103,7 @@ sudo tar xf lazygit.tar.gz -C /usr/local/bin lazygit
 lazygit --version
 ```
 
-## Config
+## Clone config
 
 ```
 git clone https://github.com/LunarVim/LunarVim.git ~/.config/nvim
