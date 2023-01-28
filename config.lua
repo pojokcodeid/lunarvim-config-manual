@@ -287,7 +287,7 @@ lvim.plugins = {
   { "mg979/vim-visual-multi" },
   {
     "CRAG666/code_runner.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
     config = function()
       require "user.lua.config.coderunner"
     end,
@@ -322,6 +322,105 @@ lvim.plugins = {
     "windwp/nvim-ts-autotag",
     config = function()
       require "user.lua.config.autotag"
+    end,
+  },
+  -- for manage and coloring copy
+  {
+    "gbprod/yanky.nvim",
+    event = "BufRead",
+    config = function()
+      require "user.lua.config.yanky"
+    end,
+  },
+  -- for check startuptime
+  { "dstein64/vim-startuptime", cmd = "StartupTime" },
+  -- for coloring pairs
+  { "p00f/nvim-ts-rainbow", event = "BufWinEnter", dependencies = "nvim-treesitter/nvim-treesitter" },
+  {
+    "echasnovski/mini.indentscope",
+    version = false, -- wait till new 0.7.0 release to put it back on semver
+    event = "BufReadPre",
+    opts = {
+      -- symbol = "▏",
+      symbol = "│",
+      options = { try_as_border = true },
+    },
+    config = function(_, opts)
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
+        callback = function()
+          vim.b.miniindentscope_disable = true
+        end,
+      })
+      require("mini.indentscope").setup(opts)
+    end,
+  },
+  -- makes some plugins dot-repeatable like leap
+  { "tpope/vim-repeat", event = "VeryLazy" },
+  -- mini scrollview
+  {
+    "karb94/neoscroll.nvim",
+    event = "WinScrolled",
+    config = function()
+      require "user.lua.config.neoscroll"
+    end,
+  },
+  {
+    "dstein64/nvim-scrollview",
+    event = "BufRead",
+    config = function()
+      require "user.lua.config.nvimscroll"
+    end,
+  },
+  -- auto complite commond mode
+  {
+    "gelguy/wilder.nvim",
+    event = "BufWinEnter",
+    config = function()
+      local wilder = require "wilder"
+      wilder.setup { modes = { ":", "/", "?" } }
+      -- *ini popup biasa
+      -- wilder.set_option(
+      -- 	"renderer",
+      -- 	wilder.popupmenu_renderer({
+      -- 		highlighter = wilder.basic_highlighter(),
+      -- 		left = { " ", wilder.popupmenu_devicons() },
+      -- 		right = { " ", wilder.popupmenu_scrollbar() },
+      -- 	})
+      -- )
+
+      -- *ini untuk border rounded
+      wilder.set_option(
+        "renderer",
+        wilder.popupmenu_renderer(wilder.popupmenu_border_theme {
+          highlights = {
+            border = "Normal", -- highlight to use for the border
+          },
+          -- 'single', 'double', 'rounded' or 'solid'
+          -- can also be a list of 8 characters, see :h wilder#popupmenu_border_theme() for more details
+          border = "rounded",
+          left = { " ", wilder.popupmenu_devicons() },
+          right = { " ", wilder.popupmenu_scrollbar() },
+        })
+      )
+
+      -- *ini untuk popup dialog
+      -- wilder.set_option(
+      -- 	"renderer",
+      -- 	wilder.popupmenu_renderer(wilder.popupmenu_palette_theme({
+      -- 		-- 'single', 'double', 'rounded' or 'solid'
+      -- 		-- can also be a list of 8 characters, see :h wilder#popupmenu_palette_theme() for more details
+      -- 		border = "rounded",
+      -- 		max_height = "40%", -- max height of the palette
+      -- 		max_width = "40%",
+      -- 		min_height = 0, -- set to the same as 'max_height' for a fixed height window
+      -- 		prompt_position = "top", -- 'top' or 'bottom' to set the location of the prompt
+      -- 		reverse = 0, -- set to 1 to reverse the order of the list, use in combination with 'prompt_position'
+      -- 		left = { " ", wilder.popupmenu_devicons() },
+      -- 		right = { " ", wilder.popupmenu_scrollbar() },
+      -- 		pumblend = 20,
+      -- 	}))
+      -- )
     end,
   },
 }
@@ -405,13 +504,13 @@ lvim.lsp.installer.setup.ensure_installed = {
   "tsserver",
   "intelephense",
   "tailwindcss",
-  "jdtls",
+  -- "jdtls",
 }
 
 require("lvim.lsp.manager").setup "emmet_ls"
 require("lvim.lsp.manager").setup "tailwindcss"
 require("lvim.lsp.manager").setup "intelephense"
-require("lvim.lsp.manager").setup "jdtls"
+-- require("lvim.lsp.manager").setup "jdtls"
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
@@ -419,7 +518,7 @@ formatters.setup {
   { command = "prettier" },
   { command = "black" },
   { command = "blade_formatter", filetype = { "php", "blade", "blade.php" } },
-  { command = "google_java_format", filetypes = { "java" } },
+  -- { command = "google_java_format", filetypes = { "java" } },
 }
 -- overide webdev icon
 require "user.lua.config.webdevicons"
