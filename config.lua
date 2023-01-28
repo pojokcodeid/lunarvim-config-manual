@@ -423,6 +423,14 @@ lvim.plugins = {
       -- )
     end,
   },
+  {
+    "jayp0521/mason-nvim-dap.nvim",
+    dependencies = { "williamboman/mason.nvim", "mfussenegger/nvim-dap" },
+    enabled = vim.fn.has "win32" == 0,
+    init = function()
+      require "user.lua.config.mason_dap"
+    end,
+  },
 }
 
 lvim.builtin.which_key.mappings["r"] = {
