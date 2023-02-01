@@ -535,7 +535,7 @@ lvim.lsp.installer.setup.ensure_installed = {
 require("lvim.lsp.manager").setup "emmet_ls"
 require("lvim.lsp.manager").setup "tailwindcss"
 require("lvim.lsp.manager").setup "intelephense"
-require("lvim.lsp.manager").setup "angularls"
+-- require("lvim.lsp.manager").setup "angularls"
 -- require("lvim.lsp.manager").setup "jdtls"
 
 local formatters = require "lvim.lsp.null-ls.formatters"
