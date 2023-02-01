@@ -282,9 +282,9 @@ end
 lvim.builtin.alpha.dashboard.section.footer.val = footer()
 
 lvim.plugins = {
-  { "ellisonleao/gruvbox.nvim", event = "VeryLazy", },
-  { "manzeloth/live-server", event = "VeryLazy", },
-  { "mg979/vim-visual-multi", event = "VeryLazy", },
+  { "ellisonleao/gruvbox.nvim", event = "VeryLazy" },
+  { "manzeloth/live-server", event = "VeryLazy" },
+  { "mg979/vim-visual-multi", event = "VeryLazy" },
   {
     "CRAG666/code_runner.nvim",
     event = "VeryLazy",
@@ -441,6 +441,9 @@ lvim.plugins = {
     "williamboman/nvim-lsp-installer",
     event = "VeryLazy",
     cmd = { "LspInstallInfo", "LspInfo" },
+    config = function()
+      require "user.lsp.config"
+    end,
   },
 }
 
@@ -536,8 +539,9 @@ formatters.setup {
   { command = "stylua", filetype = { "lua" } },
   { command = "prettier" },
   { command = "black" },
-  { command = "blade_formatter", filetype = { "php", "blade", "blade.php" } },
+  -- { command = "blade_formatter", filetype = { "php", "blade", "blade.php" } },
   -- { command = "google_java_format", filetypes = { "java" } },
+  -- { command = "dart_format" },
 }
 -- overide webdev icon
 require "user.lua.config.webdevicons"
