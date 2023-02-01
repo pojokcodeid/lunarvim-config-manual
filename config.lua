@@ -66,6 +66,9 @@ lvim.format_on_save.enabled = true
 lvim.builtin.project.active = false
 lvim.builtin.project.manual_mode = true
 lvim.colorscheme = "lunar"
+-- lvim.colorscheme = "tokyonight-night"
+-- lvim.transparent_window = true
+-- require "user.lua.config.tokyonight"
 -- lvim.colorscheme = "gruvbox"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
@@ -532,6 +535,7 @@ lvim.lsp.installer.setup.ensure_installed = {
 require("lvim.lsp.manager").setup "emmet_ls"
 require("lvim.lsp.manager").setup "tailwindcss"
 require("lvim.lsp.manager").setup "intelephense"
+require("lvim.lsp.manager").setup "angularls"
 -- require("lvim.lsp.manager").setup "jdtls"
 
 local formatters = require "lvim.lsp.null-ls.formatters"
