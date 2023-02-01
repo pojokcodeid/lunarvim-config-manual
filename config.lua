@@ -282,11 +282,12 @@ end
 lvim.builtin.alpha.dashboard.section.footer.val = footer()
 
 lvim.plugins = {
-  { "ellisonleao/gruvbox.nvim" },
-  { "manzeloth/live-server" },
-  { "mg979/vim-visual-multi" },
+  { "ellisonleao/gruvbox.nvim", event = "VeryLazy", },
+  { "manzeloth/live-server", event = "VeryLazy", },
+  { "mg979/vim-visual-multi", event = "VeryLazy", },
   {
     "CRAG666/code_runner.nvim",
+    event = "VeryLazy",
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
       require "user.lua.config.coderunner"
@@ -294,6 +295,7 @@ lvim.plugins = {
   },
   {
     "NvChad/nvim-colorizer.lua",
+    event = "VeryLazy",
     config = function()
       require "user.lua.config.colorizer"
     end,
@@ -301,6 +303,7 @@ lvim.plugins = {
   { "mfussenegger/nvim-jdtls" },
   {
     "stevearc/dressing.nvim",
+    event = "VeryLazy",
     config = function()
       require "user.lua.config.dressing"
     end,
@@ -314,12 +317,14 @@ lvim.plugins = {
   },
   {
     "mrjones2014/smart-splits.nvim",
+    event = "VeryLazy",
     config = function()
       require "user.lua.config.smartsplit"
     end,
   },
   {
     "windwp/nvim-ts-autotag",
+    event = "VeryLazy",
     config = function()
       require "user.lua.config.autotag"
     end,
@@ -425,11 +430,17 @@ lvim.plugins = {
   },
   {
     "jayp0521/mason-nvim-dap.nvim",
+    event = "VeryLazy",
     dependencies = { "williamboman/mason.nvim", "mfussenegger/nvim-dap" },
     enabled = vim.fn.has "win32" == 0,
     init = function()
       require "user.lua.config.mason_dap"
     end,
+  },
+  {
+    "williamboman/nvim-lsp-installer",
+    event = "VeryLazy",
+    cmd = { "LspInstallInfo", "LspInfo" },
   },
 }
 
