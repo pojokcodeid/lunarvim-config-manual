@@ -547,6 +547,13 @@ formatters.setup {
   -- { command = "google_java_format", filetypes = { "java" } },
   -- { command = "dart_format" },
 }
+
+-- linter config
+--local linters = require "lvim.lsp.null-ls.linters"
+--linters.setup {
+--  { command = "flake8" },
+--}
+
 -- overide webdev icon
 require "user.lua.config.webdevicons"
 
