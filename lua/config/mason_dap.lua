@@ -1,3 +1,12 @@
-local mason_nvim_dap = require "mason-nvim-dap"
-mason_nvim_dap.setup { automatic_setup = true }
-mason_nvim_dap.setup_handlers {}
+require("mason").setup()
+require("mason-nvim-dap").setup {
+  automatic_setup = true,
+  handlers = {
+    function(config)
+      -- all sources with no handler get passed here
+
+      -- Keep original functionality
+      require("mason-nvim-dap").default_setup(config)
+    end,
+  },
+}

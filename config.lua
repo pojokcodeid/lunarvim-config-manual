@@ -31,7 +31,6 @@ local options = {
   scrolloff = 8,                                -- Number of lines to keep above and below the cursor
   shiftwidth = 2,                               -- Number of space inserted for indentation
   showmode = false,                             -- Disable showing modes in command line
-  showtabline = 2,                              -- always display tabline
   sidescrolloff = 8,                            -- Number of columns to keep at the sides of the cursor
   signcolumn = "yes",                           -- Always show the sign column
   smartcase = true,                             -- Case sensitivie searching
@@ -48,7 +47,6 @@ local options = {
   -- minimal number of screen columns either side of cursor if wrap is `false`
   -- guifont = "monospace:h17", -- the font used in graphical neovim applications
   guifont = "Source_Code_Pro:h17", -- the font used in graphical neovim applications
-  whichwrap = "bs<>[]hl",          -- which "horizontal" keys are allowed to travel to prev/next line            -- which "horizontal" keys are allowed to travel to prev/next line
 }
 for k, v in pairs(options) do
   vim.opt[k] = v
@@ -521,21 +519,21 @@ lvim.builtin.cmp.mapping = {
 }
 -- lsp installer
 lvim.lsp.installer.setup.ensure_installed = {
-  "sumneko_lua",
-  "jsonls",
-  "html",
-  "cssls",
-  "emmet_ls",
-  "tsserver",
-  "intelephense",
-  "tailwindcss",
+  "lua_ls",
+  -- "jsonls",
+  -- "html",
+  -- "cssls",
+  -- "emmet_ls",
+  -- "tsserver",
+  -- "intelephense",
+  -- "tailwindcss",
   -- "jdtls",
-  "stylua",
 }
 
-require("lvim.lsp.manager").setup "emmet_ls"
-require("lvim.lsp.manager").setup "tailwindcss"
-require("lvim.lsp.manager").setup "intelephense"
+require("lvim.lsp.manager").setup "lua_ls"
+-- require("lvim.lsp.manager").setup "emmet_ls"
+-- require("lvim.lsp.manager").setup "tailwindcss"
+-- require("lvim.lsp.manager").setup "intelephense"
 -- require("lvim.lsp.manager").setup "angularls"
 -- require("lvim.lsp.manager").setup "jdtls"
 
